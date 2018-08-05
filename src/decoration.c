@@ -838,7 +838,7 @@ void sub_8127500(void)
 {
     if (sDecorPCBuffer->unk_522 == 0xFF)
     {
-        sDecorPCBuffer->unk_522 = AddScrollIndicatorArrowPairParametrized(0x02, 0x3c, 0x0c, 0x94, sDecorPCBuffer->unk_520 - sDecorPCBuffer->unk_521, 0x6e, 0x6e, &sSecretBasePCSelectDecorPageNo);
+        sDecorPCBuffer->unk_522 = AddScrollIndicatorArrowPairParameterized(SCROLL_ARROW_UP, 0x3c, 0x0c, 0x94, sDecorPCBuffer->unk_520 - sDecorPCBuffer->unk_521, 0x6e, 0x6e, &sSecretBasePCSelectDecorPageNo);
     }
 }
 
@@ -1736,7 +1736,7 @@ bool8 sub_8128D10(u8 taskId)
         data[1] ++;
         return FALSE;
     }
-    if (sDecorationLastDirectionMoved == DIR_NORTH && data[1] - 7 >= gMapHeader.mapData->height)
+    if (sDecorationLastDirectionMoved == DIR_NORTH && data[1] - 7 >= gMapHeader.mapLayout->height)
     {
         data[1] --;
         return FALSE;
@@ -1746,7 +1746,7 @@ bool8 sub_8128D10(u8 taskId)
         data[0] ++;
         return FALSE;
     }
-    if (sDecorationLastDirectionMoved == DIR_EAST && data[0] + data[5] - 8 >= gMapHeader.mapData->width)
+    if (sDecorationLastDirectionMoved == DIR_EAST && data[0] + data[5] - 8 >= gMapHeader.mapLayout->width)
     {
         data[0] --;
         return FALSE;
@@ -2186,7 +2186,7 @@ void sub_81297F8(void)
             {
                 for (x = 0; x < sDecorRearrangementDataBuffer[i].width; x ++)
                 {
-                    MapGridSetMetatileEntryAt(posX + 7 + x, posY + 7 - y, gMapHeader.mapData->map[posX + x + gMapHeader.mapData->width * (posY - y)] | 0x3000);
+                    MapGridSetMetatileEntryAt(posX + 7 + x, posY + 7 - y, gMapHeader.mapLayout->map[posX + x + gMapHeader.mapLayout->width * (posY - y)] | 0x3000);
                 }
             }
             sub_81296EC(sDecorRearrangementDataBuffer[i].idx);

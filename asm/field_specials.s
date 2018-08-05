@@ -912,7 +912,7 @@ _0813839C:
 	adds r0, r5, 0
 	adds r2, r4, 0
 	mov r3, r12
-	bl SpawnSpecialEventObjectParametrized
+	bl SpawnSpecialEventObjectParameterized
 	adds r0, r5, 0
 	adds r1, r4, 0
 	adds r2, r6, 0
@@ -1906,7 +1906,7 @@ _08138C7E:
 	thumb_func_start CB2_FieldShowRegionMap
 CB2_FieldShowRegionMap: @ 8138C84
 	push {lr}
-	ldr r0, =CB2_ReturnToFieldContinueScript
+	ldr r0, =CB2_ReturnToFieldContinueScriptPlayMapMusic
 	bl sub_817018C
 	pop {r0}
 	bx r0
@@ -2557,7 +2557,7 @@ SpawnScriptEventObject: @ 8139158
 	movs r0, 0x7
 	movs r1, 0x8
 	movs r2, 0x7F
-	bl SpawnSpecialEventObjectParametrized
+	bl SpawnSpecialEventObjectParameterized
 	lsls r0, 24
 	lsrs r0, 24
 	ldr r2, =gEventObjects
@@ -7153,14 +7153,14 @@ sub_813B7D8: @ 813B7D8
 	ldrh r0, [r0]
 	cmp r0, 0
 	bne _0813B7F8
-	ldr r2, =CB2_ReturnToFieldContinueScript
+	ldr r2, =CB2_ReturnToFieldContinueScriptPlayMapMusic
 	movs r0, 0
 	movs r1, 0x1
 	bl DoRayquazaScene
 	b _0813B802
 	.pool
 _0813B7F8:
-	ldr r2, =CB2_ReturnToFieldContinueScript
+	ldr r2, =CB2_ReturnToFieldContinueScriptPlayMapMusic
 	movs r0, 0x1
 	movs r1, 0
 	bl DoRayquazaScene

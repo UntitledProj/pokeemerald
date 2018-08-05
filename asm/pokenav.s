@@ -66,7 +66,7 @@ sub_81C72BC: @ 81C72BC
 	str r0, [r4]
 	cmp r0, 0
 	bne _081C72F0
-	ldr r0, =CB2_ReturnToFieldContinueScript
+	ldr r0, =CB2_ReturnToFieldContinueScriptPlayMapMusic
 	bl SetMainCallback2
 	b _081C7320
 	.pool
@@ -351,7 +351,7 @@ _081C752C:
 	bl sub_81C7334
 	cmp r4, 0
 	beq _081C755C
-	ldr r0, =CB2_ReturnToFieldContinueScript
+	ldr r0, =CB2_ReturnToFieldContinueScriptPlayMapMusic
 	bl SetMainCallback2
 	b _081C7562
 	.pool
@@ -10101,7 +10101,7 @@ sub_81CC09C: @ 81CC09C
 	ldrb r0, [r4, 0x14]
 	movs r1, 0x1
 	movs r2, 0x40
-	bl sub_809882C
+	bl LoadUserWindowBorderGfx
 	ldrb r0, [r4, 0x14]
 	movs r1, 0x1
 	movs r2, 0x4
@@ -11351,7 +11351,7 @@ sub_81CCA1C: @ 81CCA1C
 	lsrs r0, 24
 	movs r1, 0x42
 	movs r2, 0x40
-	bl box_border_load_tiles_and_pal
+	bl LoadUserWindowBorderGfx_
 	ldrb r0, [r5, 0x8]
 	movs r1, 0x42
 	movs r2, 0x4
@@ -16941,17 +16941,17 @@ sub_81CF7F4: @ 81CF7F4
 	mov r8, r0
 	bl sub_81CF0F0
 	adds r7, r0, 0
-	bl UnkTextUtil_Reset
+	bl DynamicPlaceholderTextUtil_Reset
 	ldr r4, =gStringVar1
 	movs r0, 0
 	adds r1, r4, 0
-	bl UnkTextUtil_SetPtrI
+	bl DynamicPlaceholderTextUtil_SetPlaceholderPtr
 	movs r0, 0xFF
 	strb r0, [r4]
 	ldr r5, =gStringVar2
 	ldr r1, =gText_NumberF700
 	adds r0, r5, 0
-	bl UnkTextUtil_StringExpandPlaceholders
+	bl DynamicPlaceholderTextUtil_ExpandPlaceholders
 	mov r1, r8
 	ldrb r0, [r1, 0x8]
 	movs r1, 0x1
@@ -19854,14 +19854,14 @@ sub_81D0E84: @ 81D0E84
 	movs r2, 0
 	movs r3, 0x2
 	bl ConvertIntToDecimalStringN
-	bl UnkTextUtil_Reset
+	bl DynamicPlaceholderTextUtil_Reset
 	movs r0, 0
 	adds r1, r4, 0
-	bl UnkTextUtil_SetPtrI
+	bl DynamicPlaceholderTextUtil_SetPlaceholderPtr
 	ldr r4, =gStringVar4
 	ldr r1, =gText_RibbonsF700
 	adds r0, r4, 0
-	bl UnkTextUtil_StringExpandPlaceholders
+	bl DynamicPlaceholderTextUtil_ExpandPlaceholders
 	ldrb r0, [r5, 0xA]
 	movs r1, 0x44
 	bl FillWindowPixelBuffer
@@ -21001,7 +21001,7 @@ sub_81D1E90: @ 81D1E90
 	movs r1, 0xC8
 	movs r2, 0xC
 	movs r3, 0x94
-	bl AddScrollIndicatorArrowPairParametrized
+	bl AddScrollIndicatorArrowPairParameterized
 	strb r0, [r4, 0x9]
 	add sp, 0x10
 	pop {r4}
@@ -22282,7 +22282,7 @@ sub_81D2824: @ 81D2824
 	movs r0, 0
 	movs r1, 0x1
 	movs r2, 0xE0
-	bl sub_809882C
+	bl LoadUserWindowBorderGfx
 	ldr r0, =gUnknown_0860F074
 	movs r1, 0xF0
 	movs r2, 0x20
@@ -26527,8 +26527,8 @@ _081D4A0E:
 	bx r1
 	thumb_func_end EventObjectIsFarawayIslandMew
 
-	thumb_func_start unown_chamber_related
-unown_chamber_related: @ 81D4A14
+	thumb_func_start IsMewPlayingHideAndSeek
+IsMewPlayingHideAndSeek: @ 81D4A14
 	push {lr}
 	ldr r0, =gSaveBlock1Ptr
 	ldr r0, [r0]
@@ -26557,7 +26557,7 @@ _081D4A50:
 _081D4A52:
 	pop {r1}
 	bx r1
-	thumb_func_end unown_chamber_related
+	thumb_func_end IsMewPlayingHideAndSeek
 
 	thumb_func_start sub_81D4A58
 sub_81D4A58: @ 81D4A58

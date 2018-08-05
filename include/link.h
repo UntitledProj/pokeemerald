@@ -122,7 +122,7 @@ struct LinkPlayer
     /* 0x08 */ u8 name[11];
     /* 0x13 */ u8 gender;
     /* 0x14 */ u32 linkType;
-    /* 0x18 */ u16 lp_field_18; // battle bank in battles
+    /* 0x18 */ u16 id; // battler id in battles
     /* 0x1A */ u16 language;
 };
 
@@ -201,7 +201,7 @@ extern u32 gLinkStatus;
 
 void c2_mystery_gift(void);
 void sub_801867C(void);
-bool8 sub_80093CC(void);
+bool8 IsWirelessAdapterConnected(void);
 void Task_DestroySelf(u8 taskId);
 void OpenLink(void);
 void CloseLink(void);

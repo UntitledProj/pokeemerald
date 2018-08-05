@@ -1837,7 +1837,7 @@ _080C805E:
 	movs r0, 0x1
 	movs r1, 0xB
 	movs r2, 0xE0
-	bl sub_809882C
+	bl LoadUserWindowBorderGfx
 	b _080C8198
 	.pool
 _080C808C:
@@ -6712,7 +6712,7 @@ sub_80CAC1C: @ 80CAC1C
 	movs r0, 0x1
 	movs r1, 0x2
 	movs r2, 0xD0
-	bl sub_809882C
+	bl LoadUserWindowBorderGfx
 	movs r0, 0x20
 	str r0, [sp]
 	movs r0, 0x14
@@ -6737,7 +6737,7 @@ sub_80CAC58: @ 80CAC58
 	sub sp, 0xC
 	lsls r0, 24
 	lsrs r6, r0, 24
-	bl UnkTextUtil_Reset
+	bl DynamicPlaceholderTextUtil_Reset
 	ldr r1, =gUnknown_0857276C
 	lsls r0, r6, 3
 	adds r0, r1
@@ -6774,7 +6774,7 @@ _080CACB8:
 	adds r1, r2
 _080CACC0:
 	movs r0, 0
-	bl UnkTextUtil_SetPtrI
+	bl DynamicPlaceholderTextUtil_SetPlaceholderPtr
 	b _080CAD30
 	.pool
 _080CACD0:
@@ -6817,7 +6817,7 @@ _080CAD16:
 	ldr r0, =0x000021eb
 	adds r1, r0
 	movs r0, 0
-	bl UnkTextUtil_SetPtrI
+	bl DynamicPlaceholderTextUtil_SetPlaceholderPtr
 _080CAD30:
 	ldr r5, =gUnknown_02039D08
 	ldr r0, [r5]
@@ -6827,7 +6827,7 @@ _080CAD30:
 	lsls r1, r6, 3
 	adds r1, r2
 	ldr r1, [r1]
-	bl UnkTextUtil_StringExpandPlaceholders
+	bl DynamicPlaceholderTextUtil_ExpandPlaceholders
 	movs r0, 0x1
 	movs r1, 0x11
 	bl FillWindowPixelBuffer
